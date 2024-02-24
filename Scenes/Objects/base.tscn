@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://1a5cikfffrik"]
+[gd_scene load_steps=9 format=3 uid="uid://1a5cikfffrik"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/base.gd" id="1_3sqqk"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_jlkxa"]
+[ext_resource type="PackedScene" uid="uid://dpxpqs07vj63q" path="res://Scenes/UI/keys.tscn" id="3_oyyi2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v64cf"]
 radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vqkst"]
+size = Vector2(20, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75exo"]
+size = Vector2(20, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88ygi"]
+size = Vector2(5.5, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4me1"]
+size = Vector2(5, 16)
 
 [node name="Base" type="Area2D"]
 collision_layer = 4
@@ -21,5 +34,55 @@ region_rect = Rect2(0, 0, 128, 64)
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_v64cf")
+
+[node name="UI" type="Node2D" parent="."]
+
+[node name="Keys" parent="UI" instance=ExtResource("3_oyyi2")]
+position = Vector2(0, -39)
+
+[node name="Keys2" parent="UI" instance=ExtResource("3_oyyi2")]
+position = Vector2(0, 43)
+frame = 2
+
+[node name="Keys3" parent="UI" instance=ExtResource("3_oyyi2")]
+position = Vector2(50, 4)
+frame = 3
+
+[node name="Keys4" parent="UI" instance=ExtResource("3_oyyi2")]
+position = Vector2(-51, 4)
+frame = 1
+
+[node name="PlayerSpawnLocations" type="Node2D" parent="."]
+
+[node name="North" type="Marker2D" parent="PlayerSpawnLocations"]
+position = Vector2(0, -35)
+
+[node name="East" type="Marker2D" parent="PlayerSpawnLocations"]
+position = Vector2(36, 6)
+
+[node name="South" type="Marker2D" parent="PlayerSpawnLocations"]
+position = Vector2(0, 38)
+
+[node name="West" type="Marker2D" parent="PlayerSpawnLocations"]
+position = Vector2(-40, 4)
+
+[node name="PlayerEnterLocations" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="South" type="CollisionShape2D" parent="PlayerEnterLocations"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_vqkst")
+
+[node name="North" type="CollisionShape2D" parent="PlayerEnterLocations"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_75exo")
+
+[node name="East" type="CollisionShape2D" parent="PlayerEnterLocations"]
+position = Vector2(26, 5)
+shape = SubResource("RectangleShape2D_88ygi")
+
+[node name="West" type="CollisionShape2D" parent="PlayerEnterLocations"]
+position = Vector2(-26, 4)
+shape = SubResource("RectangleShape2D_p4me1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

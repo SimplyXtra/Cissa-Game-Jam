@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpxpqs07vj63q"]
+
+[ext_resource type="Texture2D" uid="uid://7cq3sxvu0i8s" path="res://Graphics/Keys.png" id="1_oo1sm"]
+
+[node name="Keys" type="Sprite2D"]
+texture = ExtResource("1_oo1sm")
+hframes = 5
