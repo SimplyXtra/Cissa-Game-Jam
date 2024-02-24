@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvdelv8yuafk5"]
+
+[ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_jwbt2"]
+[ext_resource type="Script" path="res://Scenes/Items/item.gd" id="1_l71hl"]
+
+[node name="Item" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_l71hl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jwbt2")
+hframes = 4
+region_enabled = true
+region_rect = Rect2(0, 224, 128, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

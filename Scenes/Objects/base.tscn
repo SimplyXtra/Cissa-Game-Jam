@@ -20,16 +20,16 @@ size = Vector2(5.5, 16)
 size = Vector2(5, 16)
 
 [node name="Base" type="Area2D"]
+position = Vector2(-99, 67)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_3sqqk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jlkxa")
-hframes = 2
-frame = 1
+hframes = 3
 region_enabled = true
-region_rect = Rect2(0, 0, 128, 64)
+region_rect = Rect2(0, 0, 192, 64)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -55,7 +55,7 @@ frame = 1
 [node name="PlayerSpawnLocations" type="Node2D" parent="."]
 
 [node name="North" type="Marker2D" parent="PlayerSpawnLocations"]
-position = Vector2(0, -35)
+position = Vector2(0, -38)
 
 [node name="East" type="Marker2D" parent="PlayerSpawnLocations"]
 position = Vector2(36, 6)
@@ -70,19 +70,20 @@ position = Vector2(-40, 4)
 collision_layer = 0
 
 [node name="South" type="CollisionShape2D" parent="PlayerEnterLocations"]
-position = Vector2(0, 20)
+position = Vector2(0, 17)
 shape = SubResource("RectangleShape2D_vqkst")
 
 [node name="North" type="CollisionShape2D" parent="PlayerEnterLocations"]
-position = Vector2(0, -21)
+position = Vector2(0, -17)
 shape = SubResource("RectangleShape2D_75exo")
 
 [node name="East" type="CollisionShape2D" parent="PlayerEnterLocations"]
-position = Vector2(26, 5)
+position = Vector2(22, 5)
 shape = SubResource("RectangleShape2D_88ygi")
 
 [node name="West" type="CollisionShape2D" parent="PlayerEnterLocations"]
-position = Vector2(-26, 4)
+position = Vector2(-22, 4)
 shape = SubResource("RectangleShape2D_p4me1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="PlayerEnterLocations" to="." method="_on_player_enter_locations_body_entered"]

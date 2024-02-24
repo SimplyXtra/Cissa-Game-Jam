@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://632411gcee86"]
+[gd_scene load_steps=25 format=3 uid="uid://632411gcee86"]
 
 [ext_resource type="Script" path="res://Scenes/Player/pilot.gd" id="1_0rvv1"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_qi16n"]
@@ -229,6 +229,8 @@ states/Vertical/position = Vector2(648, 35.0313)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wyw3v"), "Idle", "Horizontal", SubResource("AnimationNodeStateMachineTransition_iq706"), "Horizontal", "Idle", SubResource("AnimationNodeStateMachineTransition_g2rnq"), "Idle", "Vertical", SubResource("AnimationNodeStateMachineTransition_ln8in"), "Vertical", "Idle", SubResource("AnimationNodeStateMachineTransition_vs34c")]
 graph_offset = Vector2(-7, -18.75)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ldrip"]
+
 [node name="Pilot" type="CharacterBody2D"]
 script = ExtResource("1_0rvv1")
 
@@ -258,3 +260,13 @@ parameters/conditions/Idle = false
 parameters/conditions/Vertical = false
 parameters/Horizontal/blend_position = 0.294584
 parameters/Vertical/blend_position = -0.986577
+
+[node name="ItemPickup" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickup"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ldrip")
+
+[connection signal="body_entered" from="ItemPickup" to="." method="_on_item_pickup_body_entered"]

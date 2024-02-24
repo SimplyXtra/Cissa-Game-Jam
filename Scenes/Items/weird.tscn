@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://csj6a0j6w7kjb"]
+
+[ext_resource type="PackedScene" uid="uid://cvdelv8yuafk5" path="res://Scenes/Items/item.tscn" id="1_f8ej7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uir6f"]
+radius = 14.0
+
+[node name="Weird" instance=ExtResource("1_f8ej7")]
+item_drop = "Weird"
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_uir6f")

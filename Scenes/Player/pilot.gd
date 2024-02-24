@@ -44,3 +44,8 @@ func move(_delta) -> void:
 			else:
 				$AnimationTree.set("parameters/conditions/Horizontal", true)
 				$AnimationTree.set("parameters/conditions/Idle", false)
+
+
+func _on_item_pickup_body_entered(body):
+	Global.add(body.item_drop)
+	body.queue_free()
