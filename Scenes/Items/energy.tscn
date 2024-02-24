@@ -3,10 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cvdelv8yuafk5" path="res://Scenes/Items/item.tscn" id="1_0vf1f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qyuqy"]
-radius = 16.0
+radius = 7.07107
 
 [node name="Energy" instance=ExtResource("1_0vf1f")]
 item_drop = "Energy"
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(2, 0)
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_qyuqy")

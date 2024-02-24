@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwxj00knry864"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/enemy.gd" id="1_dsaxf"]
+[ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_koftg"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_dsaxf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_koftg")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(0, 256, 96, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

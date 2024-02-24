@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cvdelv8yuafk5" path="res://Scenes/Items/item.tscn" id="1_p4dg4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e38nr"]
-radius = 14.0357
+radius = 7.07107
 
 [node name="Matter" instance=ExtResource("1_p4dg4")]
 item_drop = "Matter"

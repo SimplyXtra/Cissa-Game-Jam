@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bkuq246phis6e"]
 
+[ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6nnqc"]
 [ext_resource type="PackedScene" uid="uid://1a5cikfffrik" path="res://Scenes/Objects/base.tscn" id="1_d4i3y"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_sspqe"]
-[ext_resource type="PackedScene" uid="uid://cxcb5cgixfmx4" path="res://Scenes/Items/cool.tscn" id="3_hkb2u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmem"]
 texture = ExtResource("1_sspqe")
@@ -30,8 +30,10 @@ sources/0 = SubResource("TileSetAtlasSource_cwmem")
 
 [node name="Level" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_6nnqc")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = -2
 tile_set = SubResource("TileSet_0vfv1")
 format = 2
 layer_0/name = "Ground"
@@ -44,5 +46,25 @@ position = Vector2(304, 200)
 
 [node name="Camera2D" type="Camera2D" parent="Base"]
 
-[node name="Cool" parent="." instance=ExtResource("3_hkb2u")]
-position = Vector2(416, 208)
+[node name="EnemySpawnLocations" type="Node2D" parent="."]
+
+[node name="North" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(304, -24)
+
+[node name="South" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(304, 416)
+
+[node name="East" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(648, 208)
+
+[node name="West" type="Marker2D" parent="EnemySpawnLocations"]
+position = Vector2(-48, 208)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Items" type="Node2D" parent="."]
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

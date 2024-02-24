@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyghfy4cxgxkw"]
+
+[ext_resource type="PackedScene" uid="uid://dwxj00knry864" path="res://Scenes/Enemies/enemy.tscn" id="1_ts703"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlrmb"]
+radius = 7.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nv0uj"]
+radius = 11.0
+height = 36.0
+
+[node name="Green Enemy" instance=ExtResource("1_ts703")]
+speed = 25
+health = 130
+damage = 30
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(1.245, 1.245)
+frame = 1
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-13, 2)
+shape = SubResource("CircleShape2D_wlrmb")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-2, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nv0uj")

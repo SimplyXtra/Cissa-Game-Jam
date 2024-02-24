@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckb6bhrycmvop"]
+
+[ext_resource type="PackedScene" uid="uid://j4tqdc7egyl0" path="res://Scenes/Projectiles/projectile.tscn" id="1_g54go"]
+
+[node name="BasicBullet" instance=ExtResource("1_g54go")]
+z_index = -1

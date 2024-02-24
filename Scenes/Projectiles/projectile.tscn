@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://j4tqdc7egyl0"]
+
+[ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_epii5"]
+[ext_resource type="Script" path="res://Scenes/Projectiles/projectile.gd" id="1_nhhyu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s8oo5"]
+radius = 4.0
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_nhhyu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s8oo5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_epii5")
+region_enabled = true
+region_rect = Rect2(0, 288, 32, 32)
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
