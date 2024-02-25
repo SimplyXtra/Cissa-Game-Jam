@@ -8,7 +8,7 @@ var is_player_in_base:bool = true
 var is_base_active:bool = true
 
 var is_base_alive:bool = true
-
+signal dead
 
 func _ready() -> void:
 	$UI.visible = false
@@ -76,9 +76,12 @@ func player_leaves_base(location:Vector2, orientation:String) -> void:
 func _on_body_entered(body) -> void:
 	Global.base_health -= body.damage
 	body.take_damage(999)
+	$Camera2D.shake(0.5, 8)
 	if Global.base_health <= 0 and is_base_alive:
 		$Sprite2D.frame = 3
 		is_base_alive = false
+		$Audio/Die.play()
+		dead.emit()
 		var death_overlay_scene = load("res://Scenes/UI/death_overlay.tscn")
 		var death_overlay = death_overlay_scene.instantiate()
 		get_parent().add_child(death_overlay)

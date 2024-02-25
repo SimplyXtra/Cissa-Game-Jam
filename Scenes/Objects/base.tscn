@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1a5cikfffrik"]
+[gd_scene load_steps=14 format=3 uid="uid://1a5cikfffrik"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/base.gd" id="1_3sqqk"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_jlkxa"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://b7er7rxb4a8ot" path="res://SFX/Door.wav" id="4_pnyc4"]
 [ext_resource type="AudioStream" uid="uid://uddqs4bo7612" path="res://SFX/Exit Base.wav" id="5_nhcl3"]
 [ext_resource type="AudioStream" uid="uid://ds6l3707nnf6k" path="res://SFX/Shoot.wav" id="6_dsioa"]
+[ext_resource type="AudioStream" uid="uid://dpusyw8dygv48" path="res://SFX/explosion.wav" id="7_bfp6n"]
+[ext_resource type="Script" path="res://Scenes/Level/Camera2D.gd" id="7_tropd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v64cf"]
 radius = 30.0
@@ -108,6 +110,15 @@ stream = ExtResource("6_dsioa")
 position = Vector2(-99, 67)
 current = true
 
+[node name="Die" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_bfp6n")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("7_tropd")
+
+[node name="Timer" type="Timer" parent="Camera2D"]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerEnterLocations" to="." method="_on_player_enter_locations_body_entered"]
 [connection signal="timeout" from="ProjectileReloadTimer" to="." method="_on_projectile_reload_timer_timeout"]
+[connection signal="timeout" from="Camera2D/Timer" to="Camera2D" method="_on_timer_timeout"]
