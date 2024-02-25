@@ -16,8 +16,9 @@ shape = SubResource("CircleShape2D_s8oo5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_epii5")
+hframes = 4
 region_enabled = true
-region_rect = Rect2(0, 288, 32, 32)
+region_rect = Rect2(0, 288, 128, 32)
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 3.0

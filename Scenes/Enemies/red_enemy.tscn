@@ -8,6 +8,7 @@ radius = 7.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k6hmr"]
 
 [node name="Red Enemy" instance=ExtResource("1_any30")]
+health = 130
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-8, 1)

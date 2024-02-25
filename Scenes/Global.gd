@@ -1,5 +1,5 @@
 extends Node
-var base_max_health:int = 1000:
+var base_max_health:int = 200:
 	set(new_max_health):
 		base_max_health = new_max_health
 		update_UI.emit()
@@ -20,6 +20,8 @@ var energy_collected:int = 0
 var matter_collected:int = 0
 var weird_collected:int = 0
 var cool_collected:int = 0
+var bullet_penetration:int = 1
+var bullet_level:int = 0
 signal update_UI
 
 func add(item:String):
@@ -32,4 +34,7 @@ func add(item:String):
 			weird_collected += 1
 		"Cool":
 			cool_collected += 1
+	update_UI.emit()
+
+func quick_update_UI() -> void:
 	update_UI.emit()

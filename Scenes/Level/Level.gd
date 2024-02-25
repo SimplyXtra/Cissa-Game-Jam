@@ -34,9 +34,21 @@ func dropRandomItem(location) -> void:
 func _on_enemy_spawn_timer_timeout():
 	enemySpawn()
 	spawnInterval = randf_range(minSpawnInterval, maxSpawnInterval)
-	$EnemySpawnTimer.wait_time = spawnInterval
-	$EnemySpawnTimer.start()
+	$Timer/EnemySpawn.wait_time = spawnInterval
+	$Timer/EnemySpawn.start()
 
 
 func _on_audio_stream_player_finished():
 	$Audio/AudioStreamPlayer.play()
+
+
+func _on_difficulty_progression_timeout():
+	enemySpawnProbabilities = [enemySpawnProbabilities[0] * 0.7, enemySpawnProbabilities[1] * 0.9, 100]
+	minSpawnInterval *= 0.8
+	maxSpawnInterval *= 0.8
+	$Timer/DifficultyProgression.wait_time += 10
+	$Timer/DifficultyProgression.start()
+	$Audio/AudioStreamPlayer.stream_paused = true
+	$"Audio/Creepy Sound".play()
+	await $"Audio/Creepy Sound".finished
+	$Audio/AudioStreamPlayer.stream_paused = false

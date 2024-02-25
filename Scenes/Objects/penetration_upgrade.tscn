@@ -1,5 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cacr6ey7ngs5r"]
+[gd_scene load_steps=3 format=3 uid="uid://cacr6ey7ngs5r"]
 
 [ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_0wn78"]
+[ext_resource type="Script" path="res://Scenes/Objects/penetration_upgrade.gd" id="2_k3yc6"]
 
 [node name="PenetrationUpgrade" instance=ExtResource("1_0wn78")]
+script = ExtResource("2_k3yc6")
+prices = [[1, 3, 6, 5], [2, 6, 12, 10], [3, 10, 18, 15]]
+
+[node name="Prices" parent="." index="2"]
+offset_left = -15.0
+offset_right = -15.0

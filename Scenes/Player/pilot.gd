@@ -63,7 +63,7 @@ func _on_item_pickup_body_entered(body):
 	body.queue_free()
 
 
-func _on_enemy_radar_body_entered(body):
+func _on_enemy_radar_body_entered(_body):
 	is_running_to_base = true
 	$Alert.play()
 	$EnemyRadar/AnimationPlayer.play("Alert")

@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://divrx14nwttib"]
+[gd_scene load_steps=6 format=3 uid="uid://divrx14nwttib"]
 
 [ext_resource type="Texture2D" uid="uid://cnbrkrbamoy6v" path="res://Graphics/Energy.png" id="1_8ejc1"]
+[ext_resource type="Script" path="res://Scenes/UI/prices.gd" id="1_s7da2"]
 [ext_resource type="Texture2D" uid="uid://cbdabwomt41fm" path="res://Graphics/Matter.png" id="2_bl20k"]
 [ext_resource type="Texture2D" uid="uid://c1si34evf1p1b" path="res://Graphics/Weird.png" id="3_c51tl"]
 [ext_resource type="Texture2D" uid="uid://d3w1x82xbkcn8" path="res://Graphics/Cool.png" id="4_jjhrv"]
 
 [node name="Prices" type="Control"]
 layout_mode = 3
-anchor_right = 0.2
-anchor_bottom = 0.356
-offset_bottom = -0.160004
+anchor_right = 0.212
+anchor_bottom = 0.178
+offset_right = 0.319992
+offset_bottom = -0.0800018
+script = ExtResource("1_s7da2")
 
-[node name="ItemCost" type="VBoxContainer" parent="."]
+[node name="ItemCost" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EnergyCost" type="HBoxContainer" parent="ItemCost"]
+[node name="EnergyCost" type="VBoxContainer" parent="ItemCost"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemCost/EnergyCost"]
@@ -29,9 +32,9 @@ texture = ExtResource("1_8ejc1")
 [node name="Label" type="Label" parent="ItemCost/EnergyCost"]
 layout_mode = 2
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
-[node name="MatterCost" type="HBoxContainer" parent="ItemCost"]
+[node name="MatterCost" type="VBoxContainer" parent="ItemCost"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemCost/MatterCost"]
@@ -41,9 +44,9 @@ texture = ExtResource("2_bl20k")
 [node name="Label" type="Label" parent="ItemCost/MatterCost"]
 layout_mode = 2
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
-[node name="WeirdCost" type="HBoxContainer" parent="ItemCost"]
+[node name="WeirdCost" type="VBoxContainer" parent="ItemCost"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemCost/WeirdCost"]
@@ -53,9 +56,9 @@ texture = ExtResource("3_c51tl")
 [node name="Label" type="Label" parent="ItemCost/WeirdCost"]
 layout_mode = 2
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
-[node name="CoolCost" type="HBoxContainer" parent="ItemCost"]
+[node name="CoolCost" type="VBoxContainer" parent="ItemCost"]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemCost/CoolCost"]
@@ -65,4 +68,4 @@ texture = ExtResource("4_jjhrv")
 [node name="Label" type="Label" parent="ItemCost/CoolCost"]
 layout_mode = 2
 text = "0"
-horizontal_alignment = 2
+horizontal_alignment = 1

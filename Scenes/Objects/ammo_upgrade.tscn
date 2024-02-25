@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7rmamrcw1ns0"]
+[gd_scene load_steps=3 format=3 uid="uid://b7rmamrcw1ns0"]
 
 [ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_gktw0"]
+[ext_resource type="Script" path="res://Scenes/Objects/ammo_upgrade.gd" id="2_ut3du"]
 
 [node name="AmmoUpgrade" instance=ExtResource("1_gktw0")]
+script = ExtResource("2_ut3du")
+prices = [[3, 3, 3, 1], [6, 4, 10, 6], [9, 10, 20, 10]]
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 12
 
 [node name="PressurePlate" parent="." index="1"]
 rotation = 4.71239
+
+[node name="Prices" parent="." index="2"]
+offset_left = -8.0
+offset_top = -46.0
+offset_right = -8.0
+offset_bottom = -46.0

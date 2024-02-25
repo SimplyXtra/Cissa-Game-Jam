@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dtmc1uoitk8xu"
+path="res://.godot/imported/Cool Scary Sound.wav-0c78d624056727ef3b3fdddcb2a0a66a.sample"
+
+[deps]
+
+source_file="res://SFX/Cool Scary Sound.wav"
+dest_files=["res://.godot/imported/Cool Scary Sound.wav-0c78d624056727ef3b3fdddcb2a0a66a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

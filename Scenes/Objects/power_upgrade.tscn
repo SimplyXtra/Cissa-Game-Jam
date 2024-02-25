@@ -1,11 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1ccf60kmxm7x"]
+[gd_scene load_steps=3 format=3 uid="uid://c1ccf60kmxm7x"]
 
 [ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_xe51e"]
+[ext_resource type="Script" path="res://Scenes/Objects/power_upgrade.gd" id="2_1223f"]
 
 [node name="PowerUpgrade" instance=ExtResource("1_xe51e")]
+script = ExtResource("2_1223f")
+prices = [[5, 0, 0, 3], [10, 3, 3, 7], [15, 2, 7, 10]]
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 4
 
 [node name="PressurePlate" parent="." index="1"]
 rotation = 1.5708
+
+[node name="Prices" parent="." index="2"]
+offset_left = 40.0
+offset_right = 40.0

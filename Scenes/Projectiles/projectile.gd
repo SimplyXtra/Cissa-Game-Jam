@@ -2,9 +2,12 @@ extends Area2D
 
 @export var damage:int = 80
 @export var speed:int = 200
-@export var enemy_penetration:int = 1
+var enemy_penetration:int = 1
 var velocity:Vector2 = Vector2.ZERO
 
+func _ready():
+	enemy_penetration = Global.bullet_penetration
+	
 func _process(delta):
 	position += velocity * delta
 

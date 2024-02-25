@@ -1,11 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqwlqraue8lor"]
+[gd_scene load_steps=3 format=3 uid="uid://dqwlqraue8lor"]
 
 [ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_k5t28"]
+[ext_resource type="Script" path="res://Scenes/Objects/health_upgrade.gd" id="2_g4ql1"]
 
 [node name="HealthUpgrade" instance=ExtResource("1_k5t28")]
+script = ExtResource("2_g4ql1")
+prices = [[0, 6, 0, 0], [0, 12, 0, 0], [0, 18, 0, 0]]
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 8
 
 [node name="PressurePlate" parent="." index="1"]
 rotation = 3.14159
+
+[node name="Prices" parent="." index="2"]
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 17.0
+offset_bottom = 54.0

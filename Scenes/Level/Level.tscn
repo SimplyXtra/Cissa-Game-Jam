@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bkuq246phis6e"]
+[gd_scene load_steps=13 format=3 uid="uid://bkuq246phis6e"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6nnqc"]
 [ext_resource type="PackedScene" uid="uid://1a5cikfffrik" path="res://Scenes/Objects/base.tscn" id="1_d4i3y"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dqwlqraue8lor" path="res://Scenes/Objects/health_upgrade.tscn" id="5_0qxsm"]
 [ext_resource type="AudioStream" uid="uid://dlgifuv265xbu" path="res://Music/cissa game jam.wav" id="5_p3n6e"]
 [ext_resource type="PackedScene" uid="uid://b7rmamrcw1ns0" path="res://Scenes/Objects/ammo_upgrade.tscn" id="6_hphov"]
+[ext_resource type="AudioStream" uid="uid://dtmc1uoitk8xu" path="res://SFX/Cool Scary Sound.wav" id="10_beafj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmem"]
 texture = ExtResource("1_sspqe")
@@ -81,9 +82,6 @@ position = Vector2(648, 208)
 [node name="West" type="Marker2D" parent="EnemySpawnLocations"]
 position = Vector2(-48, 208)
 
-[node name="EnemySpawnTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
@@ -97,5 +95,19 @@ stream = ExtResource("5_p3n6e")
 volume_db = -11.333
 autoplay = true
 
-[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[node name="Creepy Sound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_beafj")
+volume_db = 5.333
+
+[node name="Timer" type="Node" parent="."]
+
+[node name="EnemySpawn" type="Timer" parent="Timer"]
+autostart = true
+
+[node name="DifficultyProgression" type="Timer" parent="Timer"]
+wait_time = 30.0
+autostart = true
+
 [connection signal="finished" from="Audio/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="Timer/EnemySpawn" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Timer/DifficultyProgression" to="." method="_on_difficulty_progression_timeout"]

@@ -30,9 +30,9 @@ script = ExtResource("1_3sqqk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jlkxa")
-hframes = 3
+hframes = 4
 region_enabled = true
-region_rect = Rect2(0, 0, 192, 64)
+region_rect = Rect2(0, 0, 256, 64)
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
