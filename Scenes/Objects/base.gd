@@ -19,6 +19,7 @@ func _ready() -> void:
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("interact") and is_player_in_base:
 		is_base_active = not is_base_active
+		$Audio/Detach.play()
 		
 		#Player is controlling base
 		if is_base_active:
@@ -56,11 +57,13 @@ func shoot(location:Vector2, direction:Vector2) -> void:
 	projectile.set_direction(direction)
 	get_parent().add_child(projectile)
 	Global.base_ammo -= 1
+	$Audio/Shoot.play()
 	if $ProjectileReloadTimer.get_time_left() == 0:
 		$ProjectileReloadTimer.start()
 
 func player_leaves_base(location:Vector2, orientation:String) -> void:
 	is_player_in_base = false
+	$Audio/Door.play()
 	$Sprite2D.frame = 0
 	$UI.visible = false
 	var player = pilot.instantiate()
@@ -74,6 +77,10 @@ func _on_body_entered(body) -> void:
 
 func _on_player_enter_locations_body_entered(body):
 	body.queue_free()
+	$Audio/Door.play()
+	$Sprite2D.frame = 1
+	await $Audio/Door.finished
+	$Audio/Detach.play()
 	$Sprite2D.frame = 2
 	is_player_in_base = true
 	is_base_active = true

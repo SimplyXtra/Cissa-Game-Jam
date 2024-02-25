@@ -59,10 +59,12 @@ func move(_delta) -> void:
 
 func _on_item_pickup_body_entered(body):
 	Global.add(body.item_drop)
+	$Pickup.play()
 	body.queue_free()
 
 
 func _on_enemy_radar_body_entered(body):
 	is_running_to_base = true
+	$Alert.play()
 	$EnemyRadar/AnimationPlayer.play("Alert")
 	#Drop items if got time

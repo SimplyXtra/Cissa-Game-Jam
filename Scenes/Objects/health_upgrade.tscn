@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqwlqraue8lor"]
+
+[ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_k5t28"]
+
+[node name="HealthUpgrade" instance=ExtResource("1_k5t28")]
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 8
+
+[node name="PressurePlate" parent="." index="1"]
+rotation = 3.14159

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8oo5"]
 radius = 4.0
 
-[node name="Projectile" type="CharacterBody2D"]
+[node name="Projectile" type="Area2D"]
 collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_nhhyu")

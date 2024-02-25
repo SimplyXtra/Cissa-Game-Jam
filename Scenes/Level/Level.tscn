@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkuq246phis6e"]
+[gd_scene load_steps=12 format=3 uid="uid://bkuq246phis6e"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6nnqc"]
 [ext_resource type="PackedScene" uid="uid://1a5cikfffrik" path="res://Scenes/Objects/base.tscn" id="1_d4i3y"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_sspqe"]
+[ext_resource type="PackedScene" uid="uid://c1ccf60kmxm7x" path="res://Scenes/Objects/power_upgrade.tscn" id="3_51rep"]
+[ext_resource type="PackedScene" uid="uid://cacr6ey7ngs5r" path="res://Scenes/Objects/penetration_upgrade.tscn" id="4_babdm"]
 [ext_resource type="PackedScene" uid="uid://cct06gf5b5twn" path="res://Scenes/UI/ui.tscn" id="4_eudo8"]
+[ext_resource type="PackedScene" uid="uid://dqwlqraue8lor" path="res://Scenes/Objects/health_upgrade.tscn" id="5_0qxsm"]
+[ext_resource type="AudioStream" uid="uid://dlgifuv265xbu" path="res://Music/cissa game jam.wav" id="5_p3n6e"]
+[ext_resource type="PackedScene" uid="uid://b7rmamrcw1ns0" path="res://Scenes/Objects/ammo_upgrade.tscn" id="6_hphov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmem"]
 texture = ExtResource("1_sspqe")
@@ -42,6 +47,21 @@ layer_0/tile_data = PackedInt32Array(-65540, 327680, 2, -4, 393216, 2, 65532, 26
 layer_1/name = "Road"
 layer_1/tile_data = PackedInt32Array(-131063, 65536, 2, -65527, 0, 2, 9, 0, 2, 65545, 0, 2, 131081, 65536, 2, 196617, 0, 2, 262153, 0, 2, 327689, 65536, 2, 458761, 0, 2, 524297, 0, 2, 589833, 0, 2, 655369, 0, 2, 720905, 0, 2, 786441, 0, 2, 851977, 0, 2, 917513, 0, 2, 458748, 196608, 2, 458749, 131072, 2, 458750, 196608, 2, 458751, 196608, 2, 393216, 196608, 2, 393217, 131072, 2, 393218, 131072, 2, 393219, 196608, 2, 393220, 196608, 2, 393221, 196608, 2, 393222, 196608, 2, 393223, 196608, 2, 393224, 196608, 2, 393226, 196608, 2, 393227, 196608, 2, 393228, 196608, 2, 393229, 196608, 2, 393230, 196608, 2, 393231, 196608, 2, 393232, 196608, 2, 393233, 196608, 2, 393234, 131072, 2, 393235, 196608, 2, 393236, 196608, 2, 393237, 196608, 2, 393238, 196608, 2)
 
+[node name="Buildings" type="Node2D" parent="."]
+z_index = -1
+
+[node name="PowerUpgrade" parent="Buildings" instance=ExtResource("3_51rep")]
+position = Vector2(16, 224)
+
+[node name="PenetrationUpgrade" parent="Buildings" instance=ExtResource("4_babdm")]
+position = Vector2(320, 344)
+
+[node name="HealthUpgrade" parent="Buildings" instance=ExtResource("5_0qxsm")]
+position = Vector2(288, 40)
+
+[node name="AmmoUpgrade" parent="Buildings" instance=ExtResource("6_hphov")]
+position = Vector2(504, 192)
+
 [node name="Base" parent="." instance=ExtResource("1_d4i3y")]
 position = Vector2(304, 200)
 
@@ -70,4 +90,12 @@ autostart = true
 
 [node name="UI" parent="." instance=ExtResource("4_eudo8")]
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_p3n6e")
+volume_db = -11.333
+autoplay = true
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="finished" from="Audio/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

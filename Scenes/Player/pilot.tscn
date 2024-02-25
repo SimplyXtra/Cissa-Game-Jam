@@ -1,7 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://632411gcee86"]
+[gd_scene load_steps=31 format=3 uid="uid://632411gcee86"]
 
 [ext_resource type="Script" path="res://Scenes/Player/pilot.gd" id="1_0rvv1"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_qi16n"]
+[ext_resource type="AudioStream" uid="uid://doqakdqggn8on" path="res://SFX/Pickup.wav" id="3_3hgx8"]
+[ext_resource type="AudioStream" uid="uid://tp0xdc0j3ypk" path="res://SFX/Alert.wav" id="4_dm8l0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ef514"]
 radius = 4.0
@@ -408,6 +410,12 @@ region_rect = Rect2(0, 320, 32, 32)
 libraries = {
 "": SubResource("AnimationLibrary_l7w6e")
 }
+
+[node name="Pickup" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_3hgx8")
+
+[node name="Alert" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dm8l0")
 
 [connection signal="body_entered" from="ItemPickup" to="." method="_on_item_pickup_body_entered"]
 [connection signal="body_entered" from="EnemyRadar" to="." method="_on_enemy_radar_body_entered"]

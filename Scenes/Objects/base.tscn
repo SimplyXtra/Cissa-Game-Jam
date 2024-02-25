@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://1a5cikfffrik"]
+[gd_scene load_steps=12 format=3 uid="uid://1a5cikfffrik"]
 
 [ext_resource type="Script" path="res://Scenes/Objects/base.gd" id="1_3sqqk"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_jlkxa"]
 [ext_resource type="PackedScene" uid="uid://dpxpqs07vj63q" path="res://Scenes/UI/keys.tscn" id="3_oyyi2"]
+[ext_resource type="AudioStream" uid="uid://b7er7rxb4a8ot" path="res://SFX/Door.wav" id="4_pnyc4"]
+[ext_resource type="AudioStream" uid="uid://uddqs4bo7612" path="res://SFX/Exit Base.wav" id="5_nhcl3"]
+[ext_resource type="AudioStream" uid="uid://ds6l3707nnf6k" path="res://SFX/Shoot.wav" id="6_dsioa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v64cf"]
 radius = 30.0
@@ -86,6 +89,24 @@ position = Vector2(-22, 4)
 shape = SubResource("RectangleShape2D_p4me1")
 
 [node name="ProjectileReloadTimer" type="Timer" parent="."]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Door" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(-99, 67)
+stream = ExtResource("4_pnyc4")
+
+[node name="Detach" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(-99, 67)
+stream = ExtResource("5_nhcl3")
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="Audio"]
+position = Vector2(-99, 67)
+stream = ExtResource("6_dsioa")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Audio"]
+position = Vector2(-99, 67)
+current = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerEnterLocations" to="." method="_on_player_enter_locations_body_entered"]

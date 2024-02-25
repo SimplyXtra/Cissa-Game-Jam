@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://4wmv263imch0"]
+
+[ext_resource type="Script" path="res://Scenes/Objects/upgrade_base.gd" id="1_cgqgd"]
+[ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_o8o08"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8t42b"]
+size = Vector2(16, 15)
+
+[node name="UpgradeBase" type="Node2D"]
+script = ExtResource("1_cgqgd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o8o08")
+hframes = 4
+vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 384, 256, 256)
+
+[node name="PressurePlate" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PressurePlate"]
+position = Vector2(-16, -7.5)
+shape = SubResource("RectangleShape2D_8t42b")
+
+[connection signal="body_entered" from="PressurePlate" to="." method="_on_pressure_plate_body_entered"]
+[connection signal="body_exited" from="PressurePlate" to="." method="_on_pressure_plate_body_exited"]

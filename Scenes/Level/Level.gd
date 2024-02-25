@@ -36,3 +36,7 @@ func _on_enemy_spawn_timer_timeout():
 	spawnInterval = randf_range(minSpawnInterval, maxSpawnInterval)
 	$EnemySpawnTimer.wait_time = spawnInterval
 	$EnemySpawnTimer.start()
+
+
+func _on_audio_stream_player_finished():
+	$Audio/AudioStreamPlayer.play()

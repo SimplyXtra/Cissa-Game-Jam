@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cacr6ey7ngs5r"]
+
+[ext_resource type="PackedScene" uid="uid://4wmv263imch0" path="res://Scenes/Objects/upgrade_base.tscn" id="1_0wn78"]
+
+[node name="PenetrationUpgrade" instance=ExtResource("1_0wn78")]
