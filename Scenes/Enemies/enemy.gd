@@ -10,16 +10,12 @@ signal dropItem(location)
 func _ready():
 	match spawnLocation:
 		0:
-			velocity = speed * Vector2.DOWN
 			$Sprite2D.rotation = 90
 		1:
-			velocity = speed * Vector2.UP
 			$Sprite2D.rotation = -90
 		2:
-			velocity = speed * Vector2.LEFT
 			$Sprite2D.rotation = 180
-		3:
-			velocity = speed * Vector2.RIGHT
+	velocity = speed * (Global.base_position - position).normalized()
 
 func _process(_delta):
 	move_and_slide()
@@ -27,7 +23,7 @@ func _process(_delta):
 func take_damage(damageAmount:int):
 	health -= damageAmount
 	if health <= 0:
-		if randi()%3 == 0:
+		if randi()%3 != 0:
 			dropItem.emit(position)
 		queue_free()
 

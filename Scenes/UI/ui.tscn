@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://cct06gf5b5twn"]
+
+[ext_resource type="Texture2D" uid="uid://cnbrkrbamoy6v" path="res://Graphics/Energy.png" id="1_6slas"]
+[ext_resource type="Script" path="res://Scenes/UI/ui.gd" id="1_vbr68"]
+[ext_resource type="Texture2D" uid="uid://cbdabwomt41fm" path="res://Graphics/Matter.png" id="2_wqd3x"]
+[ext_resource type="Texture2D" uid="uid://c1si34evf1p1b" path="res://Graphics/Weird.png" id="3_2wfyi"]
+[ext_resource type="Texture2D" uid="uid://d3w1x82xbkcn8" path="res://Graphics/Cool.png" id="4_gg1sg"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_vbr68")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 6.0
+offset_right = -9.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Inventory" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+
+[node name="Energy" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Inventory/Energy"]
+layout_mode = 2
+texture = ExtResource("1_6slas")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Inventory/Energy"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Matter" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Inventory/Matter"]
+layout_mode = 2
+texture = ExtResource("2_wqd3x")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Inventory/Matter"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Weird" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Inventory/Weird"]
+layout_mode = 2
+texture = ExtResource("3_2wfyi")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Inventory/Weird"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="Cool" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Inventory/Cool"]
+layout_mode = 2
+texture = ExtResource("4_gg1sg")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Inventory/Cool"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+value = 100.0
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/BoxContainer"]
+layout_mode = 2
+text = "Ammo: 10/10"
+horizontal_alignment = 1

@@ -1,9 +1,11 @@
 extends Node2D
 var enemies := [preload("res://Scenes/Enemies/red_enemy.tscn"), preload("res://Scenes/Enemies/green_enemy.tscn"), preload("res://Scenes/Enemies/blue_enemy.tscn")]
-var enemySpawnProbabilities := [65, 90, 100]
+var enemySpawnProbabilities := [85, 100, 100]
 var enemySpawned:CharacterBody2D
 var enemySpawnLocations := []
 var spawnInterval:float = 1
+var minSpawnInterval:float = 1.0
+var maxSpawnInterval:float = 4.0
 
 var item_drops := [preload("res://Scenes/Items/cool.tscn"), preload("res://Scenes/Items/energy.tscn"), preload("res://Scenes/Items/matter.tscn"), preload("res://Scenes/Items/weird.tscn")]
 
@@ -31,6 +33,6 @@ func dropRandomItem(location) -> void:
 
 func _on_enemy_spawn_timer_timeout():
 	enemySpawn()
-	spawnInterval = randf_range(0.5, 3.0)
+	spawnInterval = randf_range(minSpawnInterval, maxSpawnInterval)
 	$EnemySpawnTimer.wait_time = spawnInterval
 	$EnemySpawnTimer.start()

@@ -2,6 +2,7 @@ extends Area2D
 #Shooting
 var bullet:PackedScene = preload("res://Scenes/Projectiles/basic_bullet.tscn")
 
+
 #Player-Base Interaction
 var pilot:PackedScene = preload("res://Scenes/Player/pilot.tscn")
 var is_player_in_base:bool = true
@@ -13,6 +14,7 @@ func _ready() -> void:
 	$Sprite2D.frame = 2
 	is_player_in_base = true
 	is_base_active = true
+	Global.base_position = position
 
 func _process(_delta) -> void:
 	if Input.is_action_just_pressed("interact") and is_player_in_base:
@@ -37,8 +39,8 @@ func _process(_delta) -> void:
 			player_leaves_base($PlayerSpawnLocations/West.global_position, "horizontal")
 		elif Input.is_action_just_pressed("right"):
 			player_leaves_base($PlayerSpawnLocations/East.global_position, "horizontal")
-	elif is_base_active and is_player_in_base:
-		#Player selects where to go
+	elif is_base_active and is_player_in_base and Global.base_ammo > 0:
+		#Player selects where to shoot
 		if Input.is_action_just_pressed("up"):
 			shoot($PlayerSpawnLocations/North.global_position, Vector2.UP)
 		if Input.is_action_just_pressed("down"):
@@ -53,6 +55,9 @@ func shoot(location:Vector2, direction:Vector2) -> void:
 	projectile.position = location
 	projectile.set_direction(direction)
 	get_parent().add_child(projectile)
+	Global.base_ammo -= 1
+	if $ProjectileReloadTimer.get_time_left() == 0:
+		$ProjectileReloadTimer.start()
 
 func player_leaves_base(location:Vector2, orientation:String) -> void:
 	is_player_in_base = false
@@ -72,3 +77,9 @@ func _on_player_enter_locations_body_entered(body):
 	$Sprite2D.frame = 2
 	is_player_in_base = true
 	is_base_active = true
+
+
+func _on_projectile_reload_timer_timeout():
+	if Global.base_ammo < Global.base_max_ammo:
+		Global.base_ammo += 1
+		$ProjectileReloadTimer.start()

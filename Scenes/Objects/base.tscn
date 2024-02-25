@@ -85,5 +85,8 @@ shape = SubResource("RectangleShape2D_88ygi")
 position = Vector2(-22, 4)
 shape = SubResource("RectangleShape2D_p4me1")
 
+[node name="ProjectileReloadTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerEnterLocations" to="." method="_on_player_enter_locations_body_entered"]
+[connection signal="timeout" from="ProjectileReloadTimer" to="." method="_on_projectile_reload_timer_timeout"]

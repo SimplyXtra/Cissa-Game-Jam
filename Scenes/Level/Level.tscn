@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkuq246phis6e"]
+[gd_scene load_steps=7 format=3 uid="uid://bkuq246phis6e"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6nnqc"]
 [ext_resource type="PackedScene" uid="uid://1a5cikfffrik" path="res://Scenes/Objects/base.tscn" id="1_d4i3y"]
 [ext_resource type="Texture2D" uid="uid://07kbjj0uokc7" path="res://Graphics/Tileset.png" id="1_sspqe"]
+[ext_resource type="PackedScene" uid="uid://cct06gf5b5twn" path="res://Scenes/UI/ui.tscn" id="4_eudo8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmem"]
 texture = ExtResource("1_sspqe")
@@ -66,5 +67,7 @@ autostart = true
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Items" type="Node2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("4_eudo8")]
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]

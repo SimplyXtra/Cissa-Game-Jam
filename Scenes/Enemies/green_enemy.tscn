@@ -11,7 +11,7 @@ height = 36.0
 
 [node name="Green Enemy" instance=ExtResource("1_ts703")]
 speed = 25
-health = 130
+health = 240
 damage = 30
 
 [node name="Sprite2D" parent="." index="0"]
