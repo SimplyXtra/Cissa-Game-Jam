@@ -13,6 +13,7 @@ height = 46.0
 speed = 15
 health = 300
 damage = 45
+score = 20
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1.565, 1.565)

@@ -4,7 +4,7 @@ var enemySpawnProbabilities := [85, 100, 100]
 var enemySpawned:CharacterBody2D
 var enemySpawnLocations := []
 var spawnInterval:float = 1
-var minSpawnInterval:float = 1.0
+var minSpawnInterval:float = 1.2
 var maxSpawnInterval:float = 4.0
 var tracks := {
 	"normal" : preload("res://Music/cissa game jam.wav"),
@@ -52,9 +52,10 @@ func _on_difficulty_progression_timeout():
 		$Audio/AudioStreamPlayer.stream = tracks["intense"]
 		$Audio/AudioStreamPlayer.play()
 	enemySpawnProbabilities = [enemySpawnProbabilities[0] * 0.7, enemySpawnProbabilities[1] * 0.9, 100]
-	minSpawnInterval *= 0.8
-	maxSpawnInterval *= 0.8
-	$Timer/DifficultyProgression.wait_time += 10
+	minSpawnInterval *= 0.75
+	maxSpawnInterval *= 0.75
+	if $Timer/DifficultyProgression.wait_time > 20:
+		$Timer/DifficultyProgression.wait_time -= 5
 	$Timer/DifficultyProgression.start()
 	$Audio/AudioStreamPlayer.stream_paused = true
 	$"Audio/Creepy Sound".play()

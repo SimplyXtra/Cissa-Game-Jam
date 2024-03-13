@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed: int = 30
 @export var health: int = 100
 @export var damage: int = 20
+@export var score: int = 10
 @export_enum("North", "South", "East", "West") var spawnLocation:int
 var is_dead:bool = false
 
@@ -34,6 +35,8 @@ func take_damage(damageAmount:int):
 				dropItem.emit(position)
 			$DeathSound.play()
 			visible = false
+			set_collision_layer_value(1,false)
+			Global.score += score
 			await $DeathSound.finished
 			queue_free()
 		else:

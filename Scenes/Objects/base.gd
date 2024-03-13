@@ -101,4 +101,5 @@ func _on_player_enter_locations_body_entered(body):
 func _on_projectile_reload_timer_timeout():
 	if Global.base_ammo < Global.base_max_ammo:
 		Global.base_ammo += 1
+		$ProjectileReloadTimer.wait_time = Global.bullet_reload_time
 		$ProjectileReloadTimer.start()

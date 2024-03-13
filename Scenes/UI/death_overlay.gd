@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 func _on_restart_pressed():
+	Global.reset()
 	get_tree().reload_current_scene()
 
 

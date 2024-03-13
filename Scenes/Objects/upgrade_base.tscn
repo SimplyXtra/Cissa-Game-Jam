@@ -26,7 +26,7 @@ position = Vector2(-16, -7.5)
 shape = SubResource("RectangleShape2D_8t42b")
 
 [node name="Prices" parent="." instance=ExtResource("3_e1i7m")]
-visible = false
+modulate = Color(0.3, 0.3, 0.3, 0.5)
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -35,7 +35,7 @@ offset_top = -61.0
 offset_right = -16.0
 offset_bottom = -61.0
 
-[node name="Upgrade" type="AudioStreamPlayer2D" parent="."]
+[node name="Upgrade" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_nmg6k")
 
 [connection signal="body_entered" from="PressurePlate" to="." method="_on_pressure_plate_body_entered"]

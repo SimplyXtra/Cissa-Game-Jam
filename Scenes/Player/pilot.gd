@@ -1,6 +1,6 @@
 extends CharacterBody2D
-var speed:int = 100
-var fleeing_speed:int = 150
+var speed:int = 120
+var fleeing_speed:int = 180
 var is_running_to_base:bool = false
 enum {
 	vertical,

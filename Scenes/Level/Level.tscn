@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkuq246phis6e"]
+[gd_scene load_steps=14 format=3 uid="uid://bkuq246phis6e"]
 
 [ext_resource type="Script" path="res://Scenes/Level/Level.gd" id="1_6nnqc"]
 [ext_resource type="PackedScene" uid="uid://1a5cikfffrik" path="res://Scenes/Objects/base.tscn" id="1_d4i3y"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://dlgifuv265xbu" path="res://Music/cissa game jam.wav" id="5_p3n6e"]
 [ext_resource type="PackedScene" uid="uid://b7rmamrcw1ns0" path="res://Scenes/Objects/ammo_upgrade.tscn" id="6_hphov"]
 [ext_resource type="AudioStream" uid="uid://dtmc1uoitk8xu" path="res://SFX/Cool Scary Sound.wav" id="10_beafj"]
+[ext_resource type="PackedScene" uid="uid://brpb5wtee5x8" path="res://Scenes/UI/pause_screen.tscn" id="11_4a43u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cwmem"]
 texture = ExtResource("1_sspqe")
@@ -36,6 +37,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_cwmem")
 
 [node name="Level" type="Node2D"]
+process_mode = 1
 y_sort_enabled = true
 script = ExtResource("1_6nnqc")
 
@@ -103,8 +105,11 @@ volume_db = 5.333
 autostart = true
 
 [node name="DifficultyProgression" type="Timer" parent="Timer"]
-wait_time = 30.0
+wait_time = 70.0
 autostart = true
+
+[node name="PauseScreen" parent="." instance=ExtResource("11_4a43u")]
+visible = false
 
 [connection signal="dead" from="Base" to="." method="_on_base_dead"]
 [connection signal="finished" from="Audio/AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

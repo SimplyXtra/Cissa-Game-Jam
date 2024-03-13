@@ -5,7 +5,7 @@
 
 [node name="PowerUpgrade" instance=ExtResource("1_xe51e")]
 script = ExtResource("2_1223f")
-prices = [[5, 0, 0, 3], [10, 3, 3, 7], [15, 2, 7, 10]]
+prices = [[4, 0, 0, 1], [7, 0, 2, 4], [11, 0, 5, 10]]
 
 [node name="Sprite2D" parent="." index="0"]
 frame = 4
